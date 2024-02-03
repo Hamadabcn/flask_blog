@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ post.title }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ post.title }}</h1>
+<p>{{ post.body }}</p>
+<div class="row row-cols-auto">
+    <div class="col">
+        <a href="/" class="btn btn-primary">Articles</a>
+    </div>
+    <div class="col">
+        <a href="{{ url_for('blog.update', post_id=post['id']) }}" class="btn btn-primary">Update Article</a>
+    </div>
+</div>
+{% endblock %}

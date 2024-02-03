@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Article{% endblock %}
+
+{% block content %}
+<form action="{% if post %}{{ url_for('blog.update', post_id=post['id']) }}{% else %}{{ url_for('blog.create') }}{% endif %}" method="post">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Article Title</label>
+    <input type="text" name="title" class="form-control" id="exampleInputEmail1" value="{{ post['title'] if post else '' }}">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Body of the Article</label>
+    <textarea class="form-control" name="body" rows="10">{{ post['body'] if post else '' }}</textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">{{ 'Update Article' if post else 'Create Article' }}</button>
+</form>
+{% endblock %}
